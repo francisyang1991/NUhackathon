@@ -1,9 +1,10 @@
 var terms;
 var schools;
 var subjects;
-var request_term;
-var request_subject;
-var request_school;
+var request_term = null;
+var request_subject = null;
+var request_school =null;
+var courses =null;
 
 var url_head = 'http://vazzak2.ci.northwestern.edu/';
 $(document).ready(function () {
@@ -12,16 +13,17 @@ $(document).ready(function () {
 	     // 	var checked = $(':radio:checked')
 	     // 	console.log(checked);
 	     // });
-
+	// var callbacks = $.Callbacks();
 	loadData();
-	var i = 0;
+	// callbacks.add(select_courses);
+	$('.menu').on('click',select_courses);
+	
+	// var i = 0;
 	// for (var entry in terms.responseJSON) {
 	// 	i++;
 	// };
 	// console.log(terms.readyState);
-	console.log(terms);
-	console.log(schools);
-	console.log(subjects);
+	
 
 
 })
@@ -30,7 +32,7 @@ function choose_term(id)
 {
 	//alert(id);
 	request_term = id;
-	alert(request_term);
+	console.log('request_term'+request_term);
 	var name = $('#' + id).text();
 	$("#terms").html(name +'<i class="dropdown icon"></i>'+' <div class="menu" id="terms_menu" style="overflow:scroll; height:150px"></div>');
 	//document.getElementById("terms").innerHTML = id;
@@ -42,7 +44,7 @@ function choose_term(id)
 function choose_subject(id)
 {
 	request_subject = id;
-	alert(request_subject);
+	console.log('request_subject'+request_subject);
 	//alert("here");
 	//alert("id"+id);
 	var name = $('#' + id).text();
@@ -56,7 +58,7 @@ function choose_subject(id)
 function choose_school(id)
 {
 	request_school = id;
-	alert(request_school);
+	console.log('request_school'+request_school);
 	//alert(id);
 	var name = $('#' + id).text();
 	//alert(name);
@@ -132,6 +134,34 @@ function loadData(){
 }
 
 function select_courses(){
+	var query_address ="http://vazzak2.ci.northwestern.edu/courses/?";
+	if (request_term&&request_subject){
+		query_address += ("term="+request_term+"&subject="+request_subject);
+
+		$.ajax({
+	                url: query_address,
+	                dataType: "json",  
+	                // work with the response
+	                success: function( response ) {
+	             
+	                    courses=response;
+	                    draw_courses();
+	                }
+	            });
+	}
+	else console.log("not selected!")
+}
+
+function draw_courses(){
+	console.log("courses:");
+	console.log(courses);
+	alert(courses.length);
+	alert(courses[0].title);
+	for (var i =0;i<courses.length;i++){
+		console.log(courses[i].title);
+		var to_append = '<section class ="ui segment"><h3>'+courses[i].title+'<h3><p>'+courses[i].requirements+'</p><p>'+courses[i].overview+'</p><p>'+courses[i].room+'</p><p>'+courses[i].start_time+' to '+courses[i].start_time+'</p></section>';
+		$("#body").append(to_append);
+	}
 
 }
 
