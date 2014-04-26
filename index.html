@@ -16,13 +16,14 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.js"></script>
 
   <script src="./packaged/javascript/semantic.js"></script>
+  <script src="index.js"></script>
 <script>
-// console.log('fdsafs')
-$.getJSON('./data.js',function(data){
-  console.log(data);
-})
-</script>
 
+          $.getJSON('http://vazzak2.ci.northwestern.edu/subjects/', function(jd) {
+             console.log(jd);
+          });
+
+</script>
 
 </head>
 <body>
@@ -35,20 +36,35 @@ $.getJSON('./data.js',function(data){
     </a>
   </div>
 
+
  <div class="ui divided grid">
   <div class="four wide column">
     <div class="ui segment">
-      <div class = "justified row"
-      <div class="ui tiny buttons">
-  <div class="ui button">Undergrad</div>
-  <div class="or"></div>
-  <div class="ui button">Graduate</div>
-</div>
-</div>
+      <h2>Level</h2>
+      <div class="ui checkbox">
+        <input type="checkbox" id="under">
+        <label for = 'under' >UnderGrad</label>
+      </div>
+      <div class="ui checkbox">
+        <input type="checkbox" id="grad">
+        <label for = 'grad' >Grad</label>
+      </div>
     </div>
+
+    <div class="ui segment">
+      <h3>Course (choose one to browse)</h3>
+      <div>
+        content that is queried
+      </div>
+    </div>
+
+  </div>
+
   <div class="eight wide column">
     <div class="ui segment"><b>Column Two</b> Aliquam lobortis commodo sem ac accumsan. Vestibulum non faucibus lorem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur sed lorem lorem. Nam augue erat, dignissim nec aliquam vel, congue et sapien. Integer viverra justo vel nibh suscipit commodo. Nullam ut turpis nibh, in luctus risus. Sed ut risus nec dui mattis porta. Nam nisi magna, ornare mollis congue a, suscipit at nisl.</div>
+  
   </div>
+
   <div class="four wide column " style = "margin:auto;position:fixed; height:500px;overflow:scroll">
     <div class="ui fixed right floated segment "><b>Column Three</b> Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat. </div>
   </div>
