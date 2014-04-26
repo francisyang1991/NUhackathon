@@ -2,8 +2,6 @@ var terms;
 var schools;
 var subjects;
 var url_head = 'http://vazzak2.ci.northwestern.edu/';
-
-
 $(document).ready(function () {
 
 	     // $(":radio").change(function(){
@@ -44,6 +42,7 @@ function loadData(){
                 }
             });
 
+
 	$.ajax({
                 url: "http://vazzak2.ci.northwestern.edu/schools",
                 dataType: "json",  
@@ -64,4 +63,6 @@ function loadData(){
                 }
             });
 }
+
+
 
