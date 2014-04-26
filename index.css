@@ -1,0 +1,100 @@
+.right-panel{
+	right:5px;
+	top:70px;
+	position: absolute;
+}	
+
+#subject{
+   left:0px;
+   top:150px;
+   width: 100%;
+   display: block;
+}
+
+
+.courses{
+   position: relative;
+   width: 100%;
+   display: block;
+   
+}
+
+.course-lens {   
+   width: 100%;
+   
+}
+
+li {
+   line-height: 1.5em;
+}
+
+
+.course-title{
+
+   background-color: white;
+   line-height: 1.5em;
+   height: 20px;
+   margin: 0px;
+   padding: 0px;
+   font-family: "Trebuchet MS", Arial, Sans-serif;
+   font-size: 12px;
+   border: none;
+   outline-style: none;
+   line-height: 1.4em;
+   
+}
+
+.infoBody{
+
+   display: block;
+}
+
+
+
+table {
+   border: 1px solid #999;
+   border-collapse: collapse;
+   font-family: Georgia, Times, serif;
+   width:250px;
+   height:400px;
+}
+
+th {
+   border: 1px solid #999;
+   font-size: 70%;
+   text-transform: uppercase;
+   width:5em;
+}
+td {
+   border: 1px solid #999;
+   height: 17px;
+   width:40px;
+   padding: 5px;
+   text-align: center;
+   font-size: 100%;
+   cursor: pointer;	
+   
+}
+td div:hover{
+
+	background-color: red;
+}
+.day {
+   text-align: right;
+   }
+
+}
+.weekend {
+   background-color: #F3F3F3;
+}
+
+.courseBody{
+   border: none;
+   border-collapse: collapse;
+   font-family: Georgia, Times, serif;
+   height: auto;
+}
+
+
+
+
