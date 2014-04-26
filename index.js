@@ -23,7 +23,10 @@ $(document).ready(function () {
 	// 	i++;
 	// };
 	// console.log(terms.readyState);
-	
+	// $(i).on('click',function(){
+	// 	$(this).parent().
+
+	// });
 
 
 })
@@ -155,14 +158,28 @@ function select_courses(){
 function draw_courses(){
 	console.log("courses:");
 	console.log(courses);
-	alert(courses.length);
-	alert(courses[0].title);
-	for (var i =0;i<courses.length;i++){
-		console.log(courses[i].title);
-		var to_append = '<section class ="ui segment"><h3>'+courses[i].title+'<h3><p>'+courses[i].requirements+'</p><p>'+courses[i].overview+'</p><p>'+courses[i].room+'</p><p>'+courses[i].start_time+' to '+courses[i].start_time+'</p></section>';
-		$("#body").append(to_append);
-	}
+	// alert(courses.length);
+	// alert(courses[0].title);
+	$("#body").empty();
+		for (var i =0;i<courses.length;i++){
+			// console.log(courses[i].title);
+			var to_append = '<section class ="ui segment" eroll = "false" days = '+courses[i].meeting_days +' start ='+courses[i].start_time+' end ='+courses[i].end_time+' id ="'+courses[i].class_num+'">'+'<i class="huge expand icon" onclick = "enroll(this)" style = "float:right"></i>'+'<h3>'+courses[i].catalog_num+" "+courses[i].title+'<h3>'+'<p>'+courses[i].requirements+'</p><p>'+courses[i].overview+'</p><p>'+courses[i].room+'</p><p>'+courses[i].start_time+' to '+courses[i].start_time+'</p></section>';
+			$("#body").append(to_append);
+		}
 
+}
+
+function enroll(x){
+	var course = $(x).parent();
+	var status = course.prop('enroll');
+	course.prop('enroll',!status);
+	if(course.prop('enroll')){
+		$(x).prop('class', 'huge collapse icon');
+	}
+	else $(x).prop('class', 'huge expand icon');
+	// var course = $('#'+$(x).parent().id);
+	// console.log($(x).parent().attr('id'));
+	console.log(course);
 }
 
 
