@@ -15,6 +15,10 @@ $(document).ready(function () {
 	// 	i++;
 	// };
 	// console.log(terms.readyState);
+	console.log(terms);
+	console.log(schools);
+	console.log(subjects);
+
 
 })
 
@@ -64,5 +68,8 @@ function loadData(){
             });
 }
 
+function select_courses(){
+
+}
 
 
