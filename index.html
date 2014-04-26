@@ -17,6 +17,7 @@
 
   <script src="./packaged/javascript/semantic.js"></script>
   <script src="index.js"></script>
+  <script src="menu.js"></script>
 
 </head>
 <body>
@@ -32,41 +33,32 @@
 
 <div class = 'ui divided grid'>
 
-<div class="four wide column" style="height:500px;">
+<div class="three wide column" style="height:500px;">
     <div class="ui segment" style="height:300px;">
 
       <p>Terms: </p>
       <div class="ui compact menu">
-        <div class="ui simple dropdown item">
+        <div class="ui simple dropdown item" id="terms">
           Dropdown <i class="dropdown icon"></i>
-          <div class="menu">
-          <div class="item">Choice 1</div>
-          <div class="item">Choice 2</div>
-          <div class="item">Choice 3</div>
+          <div class="menu" id="terms_menu" style="overflow:scroll; height:150px">
           </div>
         </div>
       </div>
 
       <p>Subject: </p>
       <div class="ui compact menu">
-        <div class="ui simple dropdown item">
+        <div class="ui simple dropdown item" id="subjects">
           Dropdown <i class="dropdown icon"></i>
-          <div class="menu">
-          <div class="item">Choice 1</div>
-          <div class="item">Choice 2</div>
-          <div class="item">Choice 3</div>
+          <div class="menu" id="subject_menu" style="overflow:scroll; height:150px">
           </div>
         </div>
       </div>
 
       <p>School: </p>
       <div class="ui compact menu">
-        <div class="ui simple dropdown item">
+        <div class="ui simple dropdown item" id="schools">
           Dropdown <i class="dropdown icon"></i>
-          <div class="menu">
-          <div class="item">Choice 1</div>
-          <div class="item">Choice 2</div>
-          <div class="item">Choice 3</div>
+          <div class="menu" id="school_menu" style="overflow:scroll; height:150px">
           </div>
         </div>
       </div>
@@ -78,12 +70,12 @@
 
 
 
-  <div class="eight wide column">
+  <div class="nine wide column">
     <div class="ui segment"><b>Column Two</b> Aliquam lobortis commodo sem ac accumsan. Vestibulum non faucibus lorem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur sed lorem lorem. Nam augue erat, dignissim nec aliquam vel, congue et sapien. Integer viverra justo vel nibh suscipit commodo. Nullam ut turpis nibh, in luctus risus. Sed ut risus nec dui mattis porta. Nam nisi magna, ornare mollis congue a, suscipit at nisl.</div>
   
   </div>
 
-  <div class="four wide column " style = "margin:auto;position:fixed; height:500px;overflow:scroll">
+  <div class="four wide column " style = "margin:auto; position:fixed; height:500px;overflow:scroll">
     <div class="ui fixed right floated segment "><b>Column Three</b> Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat.Column Three Donec semper mollis condimentum. Aenean eget rutrum magna. Mauris ornare nibh scelerisque turpis lobortis dignissim. Etiam eleifend justo eget quam semper vulputate. Nulla et risus convallis velit molestie iaculis. Aliquam erat volutpat. </div>
   </div>
 </div>
