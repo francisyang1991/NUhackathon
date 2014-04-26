@@ -14,10 +14,15 @@ $(document).ready(function () {
 	             terms=data;
 	          });
 	console.log(terms);
+	//alert(terms.)
 
 	schools = $.getJSON(url_head+'schools', function(data) {
 	             schools=data;
 	          });
+	//alert(schools.responseJSON[0].name);
+	
+	//alert(schools[0]);
+	//alert(schools[0]);
 	console.log(schools);
 
 	subjects = $.getJSON(url_head+'subjects', function(data) {
