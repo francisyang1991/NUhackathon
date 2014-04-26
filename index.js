@@ -172,14 +172,14 @@ function draw_courses(){
 function enroll(x){
 	var course = $(x).parent();
 	var status = course.prop('enroll');
-	course.prop('enroll',!status);
-	if(course.prop('enroll')){
+	$(x).parent().prop('enroll',!status);
+	if($(x).parent().prop('enroll')){
 		$(x).prop('class', 'huge collapse icon');
 	}
 	else $(x).prop('class', 'huge expand icon');
 	// var course = $('#'+$(x).parent().id);
 	// console.log($(x).parent().attr('id'));
-	console.log(course);
+	console.log($(x).parent().prop('enroll'));
 }
 
 
