@@ -16,7 +16,7 @@ $(document).ready(function () {
 	// var callbacks = $.Callbacks();
 	loadData();
 	// callbacks.add(select_courses);
-	$('.menu').click(select_courses);
+	$('.menu').on('click',select_courses);
 	
 	// var i = 0;
 	// for (var entry in terms.responseJSON) {
@@ -171,7 +171,7 @@ function draw_courses(){
 
 function enroll(x){
 	var course = $(x).parent();
-	var status = course.attr('enroll');
+	var status = course.prop('enroll');
 	course.prop('enroll',!status);
 	if(course.prop('enroll')){
 		$(x).prop('class', 'huge collapse icon');
