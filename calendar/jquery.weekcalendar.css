@@ -32,7 +32,7 @@
 .wc-container table {
   border-collapse: collapse;
   border-spacing: 0;
-  border: solid;
+  border: solid 1px;
 }
 .wc-container table td {
 	
@@ -61,12 +61,12 @@
 
 .wc-header .wc-day-column-header {
     text-align: center;
-    padding: 0.4em;
+    padding: 0px;
 }
 
 .wc-header .wc-user-header{
     text-align: center;
-    padding: 0.4em 0;
+    padding: 0;
   overflow:hidden;
 }
 .wc-grid-timeslot-header {
@@ -89,7 +89,7 @@ table.wc-time-slots {
     width: 100%;
     table-layout: fixed;
     cursor: default;
-  overflow:hidden;
+  
 }
 
 .wc-day-column {
@@ -97,10 +97,10 @@ table.wc-time-slots {
     overflow: visible;
     vertical-align: top;
 }
-.wc-day-column-header{border-width: 0 0 1px 3px; border-style: solid;border-color:transparent;}
-.wc-scrollable-grid .wc-day-column-last,
+.wc-day-column-header{border-width: 1px; border-color:transparent;}
+.wc-scrollable-grid .wc-day-column-last {border:0 0 0 1px; border-style: solid;}
 .wc-scrollable-grid .wc-day-column-middle{border-width: 0 0 0 1px; border-style: dashed;}
-.wc-scrollable-grid .wc-day-column-first{border-width: 0 0 0 3px; border-style: double;}
+.wc-scrollable-grid .wc-day-column-first{border-width: 0 0 0 1px; border-style: double;}
 
 .wc-day-column-inner {
     width: 100%;
@@ -142,14 +142,14 @@ table.wc-time-slots {
 .wc-column-even.ui-state-hover{background-image:none;border:none;}
 
 /* .wc-header .wc-today.ui-state-active{background-image:none;} */
-/* .wc-header .wc-today.wc-day-column-header{border-width:0 3px; border-style: solid;} */
-.wc-header .wc-user-header{border-width:0;}
+ .wc-header .wc-today.wc-day-column-header{border-width:0 1px; } 
+.wc-header .wc-user-header{border-width:1px;}
 
 .wc-time-slots .wc-day-column.ui-state-default{background:transparent;}
 /* .wc-time-slots .wc-today.ui-state-active{background-image:none;} */
-/* .wc-header .wc-today.ui-state-active.wc-day-column-middle{border-width:0;} */
-/* .wc-header .wc-today.ui-state-active.wc-day-column-first{border-left-width:3px;} */
-/* .wc-header .wc-today.ui-state-active.wc-day-column-last{border-right-width:3px;} */
+ .wc-header .wc-today.ui-state-active.wc-day-column-middle{border-width:1px;} 
+ .wc-header .wc-today.ui-state-active.wc-day-column-first{border-left-width:1px;} 
+ .wc-header .wc-today.ui-state-active.wc-day-column-last{border-right-width:1px;} 
 
 .wc-full-height-column{
     display:block;
@@ -160,6 +160,7 @@ table.wc-time-slots {
 .wc-time-header-cell {
     padding: 5px;
     height: 80px; /* reference height */
+    border-bottom: 0px solid ;
 }
 
 

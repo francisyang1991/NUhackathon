@@ -25,7 +25,9 @@ $(document).ready(function() {
       },
       eventRender : function(calEvent, $event) {
          if (calEvent.end.getTime() < new Date().getTime()) {
-            $event.css("backgroundColor", "red");
+
+            $event.css("backgroundColor", $('#'+calEvent.id).css('background-color'));
+            console.log("In Demo: "+calEvent.id);
             $event.find(".wc-time").css({
                "backgroundColor" : "blue",
                "border" : "1px solid #888"
@@ -39,49 +41,7 @@ $(document).ready(function() {
          return 0;
       },
       eventNew : function(calEvent, $event) {
-       /*
-  var $dialogContent = $("#event_edit_container");
-         resetForm($dialogContent);
-         var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
-         var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
-         var titleField = $dialogContent.find("input[name='title']");
-         var bodyField = $dialogContent.find("textarea[name='body']");
-
-
-         $dialogContent.dialog({
-            modal: true,
-            title: "New Calendar Event",
-            close: function() {
-               $dialogContent.dialog("destroy");
-               $dialogContent.hide();
-               $('#calendar').weekCalendar("removeUnsavedEvents");
-            },
-            buttons: {
-               save : function() {
-                  calEvent.id = id;
-                  id++;
-                  calEvent.start = new Date(startField.val());
-                  calEvent.end = new Date(endField.val());
-                  calEvent.title = titleField.val();
-                  calEvent.body = bodyField.val();
-
-                  $calendar.weekCalendar("removeUnsavedEvents");
-                  $calendar.weekCalendar("updateEvent", calEvent);
-                  $dialogContent.dialog("close");
-               },
-               cancel : function() {
-                  $dialogContent.dialog("close");
-               }
-            }
-         }).show();
-
-         $dialogContent.find(".date_holder").text($calendar.weekCalendar("formatDate", calEvent.start));
-         setupStartAndEndTimeFields(startField, endField, calEvent, $calendar.weekCalendar("getTimeslotTimes", calEvent.start));
-*/
-
       },
-      
-      
       eventDrop : function(calEvent, $event) {
         
       },
@@ -120,7 +80,7 @@ $(document).ready(function() {
                   $calendar.weekCalendar("updateEvent", calEvent);
                   $dialogContent.dialog("close");
                },
-               "delete" : function() {
+               delete : function() {
                   $calendar.weekCalendar("removeEvent", calEvent.id);
                   $dialogContent.dialog("close");
                },
@@ -162,51 +122,17 @@ $(document).ready(function() {
       return {
       	
           events : [
-            {
-               "id":1,
-               "start": new Date(year, month, day, 12),
-               "end": new Date(year, month, day, 13, 30),
-               "title":"Lunch with Mike"
-            },
-            {
-               "id":2,
-               "start": new Date(year, month, day, 14),
-               "end": new Date(year, month, day, 14, 45),
-               "title":"Dev Meeting"
-            },
-
-            {
-               "id":6,
-               "start": new Date(year, month, day, 10),
-               "end": new Date(year, month, day, 11),
-               "title":"I'm read-only",
-               readOnly : true
-            },
-            {
-               "id":7,
-               "start": new Date(year, month, day + 2, 17),
-               "end": new Date(year, month, day + 3, 9),
-               "title":"Multiday"
-            }
+            
          ]
       };
-   }
-
-
-/*    $calendar.weekCalendar('clear');  */
-	
-	
-	NewEvent = {
-               "id":9,
-               "start": new Date(year, month, day, 9),
-               "end": new Date(year, month, day, 9, 30),
-               "title":"math",
-            };
-	$("#calendar").weekCalendar('updateEvent',  NewEvent);
-/*
-	$('#calendar').weekCalendar({
-		  timeslotsPerHour : 2,
-	});
-	$('.wc-container').css('width', "100%");
-*/
+   }	
 });
+function getRandomColor() {
+    var letters = '0123456789'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 10)];
+    }
+    return color;
+}
+

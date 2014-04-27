@@ -78,11 +78,10 @@ ol.formatted li {
 }
 #switcher{float:left;}
 
-
-
-#calendar{
-	right: 70px;
-	position: fixed;
-	top:50px;
-	width: 250px;
+.wc-time-slot {
+	
 }
+.ui-widget .wc-container {
+	height: 400px;
+}
+

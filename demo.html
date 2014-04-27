@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properities -->
+  <title>Course Arranger</title>
+
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="./packaged/css/semantic.css">
+  
+  <link rel='stylesheet' type='tex<!-- t -->/css' href='reset.css' />
+  <link rel='stylesheet' type='text/css' href='calendar/libs/css/smoothness/jquery-ui-1.8.11.custom.css' />
+
+
+  <link rel='stylesheet' type='text/css' href='calendar/jquery.weekcalendar.css' />
+  <link rel='stylesheet' type='text/css' href='demo.css' />
+                  
+  <link rel='stylesheet' type='text/css' href='calendar/skins/default.css' />
+  <link rel='stylesheet' type='text/css' href='Wallpaper-master/jquery.fs.wallpaper.css' />
+
+
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.js"></script>
+
+  <script src="./packaged/javascript/semantic.js"></script>
+  <script src="index.js"></script>
+  <script src="menu.js"></script>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.0.js'></script>
+  <script type='text/javascript' src='calendar/libs/jquery-ui-1.8.11.custom.min.js'></script>
+<!--  <script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script> -->
+
+
+  <script type="text/javascript" src="calendar/libs/date.js"></script>
+  <script type='text/javascript' src='calendar/jquery.weekcalendar.js'></script>
+
+  <script type='text/javascript' src='demo.js'></script>
+  <script type='text/javascript' src='quicksearch-master/jquery.quicksearch.js'></script>
+  <script type='text/javascript' src='Wallpaper-master/jquery.fs.wallpaper.js'></script>
+  
+
+
+</head>
+<body>
+  <!-- header bar -->
+  <div class="ui fixed purple inverted menu">
+    <a class="active item" href = "index.html">
+      <i class="home icon" ></i> Course Arranger
+    </a>
+    <a class="item" style="float:right">
+      <i class="user icon"></i> Members
+    </a>
+  </div>
+
+<div class = 'ui divided grid' style = "padding-top:60px;">
+
+<div class="three wide column" style="height:500px;">
+    <div class="ui piled segment" style="height:300px;">
+
+      <p>Terms: </p>
+      <div class="ui compact menu">
+        <div class="ui simple dropdown item" id="terms">
+          Selection <i class="dropdown icon"></i>
+          <div class="menu" id="terms_menu" style="overflow:scroll; height:150px">
+          </div>
+        </div>
+      </div>
+
+      <p>Subject: </p>
+      <div class="ui compact menu">
+        <div class="ui simple dropdown item" id="subjects">
+          Selection <i class="dropdown icon"></i>
+          <div class="menu" id="subject_menu" style="overflow:scroll; height:300px">
+          </div>
+        </div>
+      </div>
+
+      <p>School: </p>
+      <div class="ui compact menu">
+        <div class="ui simple dropdown item" id="schools">
+          Selection <i class="dropdown icon"></i>
+          <div class="menu" id="school_menu" style="overflow:scroll; height:150px">
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+</div>
+
+
+
+
+  <div class="eight wide column" style = "padding-left:0px;padding-right:0px;">
+    <div class="ui segment">
+      <h2>Search</h2>
+      <div class="ui fluid icon input" style = "">
+        <input type="text" id = "search" placeholder="Search...">
+        <div class = "ui icon button" id ="search_btn">
+        <i class="search icon" ></i>
+      </div>
+      </div>
+      <br>
+      <div id = "body">
+      </div>
+
+    </div>
+    
+  
+  </div>
+
+  <div class="five wide column " style = "margin:auto; position:fixed; height:500px;overflow:scroll">
+    <div class="ui fixed right floated segment ">
+        <div class = "courselist"></div>
+        <!-- <div class="ui google plus button" style = "left:0px;width:40px;  ">
+              <i class="google plus icon"></i>
+              Export to Google
+            </div> -->
+        <a class="ui purple button" id = "clearCourses"style = "left:230px;position:relative;height:30px;font-size:70%;text-align:center;">Clear</a>
+	     <div id='calendar' class ='CalendarClass'></div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>

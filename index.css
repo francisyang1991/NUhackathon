@@ -1,6 +1,6 @@
 .right-panel{
 	right:5px;
-	top:70px;
+	top:470px;
 	position: absolute;
 }	
 
@@ -49,36 +49,6 @@ li {
    display: block;
 }
 
-
-
-table {
-   border: 1px solid #999;
-   border-collapse: collapse;
-   font-family: Georgia, Times, serif;
-   width:250px;
-   height:400px;
-}
-
-th {
-   border: 1px solid #999;
-   font-size: 70%;
-   text-transform: uppercase;
-   width:5em;
-}
-td {
-   border: 1px solid #999;
-   height: 17px;
-   width:40px;
-   padding: 5px;
-   text-align: center;
-   font-size: 100%;
-   cursor: pointer;	
-   
-}
-td div:hover{
-
-	background-color: red;
-}
 .day {
    text-align: right;
    }
@@ -96,5 +66,12 @@ td div:hover{
 }
 
 
+.preview-classes{
+
+}
+
+#calendar{
+   height: 400px;
+}
 
 

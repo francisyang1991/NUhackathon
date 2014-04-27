@@ -108,8 +108,9 @@
         },
         eventDelete: function(calEvent, element, dayFreeBusyManager, 
                                                       calendar, clickEvent) {
+            console.log("In Main Function : "+calEvent.id);
             calendar.weekCalendar('removeEvent',calEvent.id);
-	},
+	       },
         calendarBeforeLoad: function(calendar) {
         },
         calendarAfterLoad: function(calendar) {
@@ -135,8 +136,8 @@
         eventBody: function(calEvent, calendar) {
           return calEvent.title;
         },
-        shortMonths: ['Jan', 'Feb', 'Mar', '4', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        longMonths: ['Jan', 'Feb', 'Mar', '4', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        shortMonths: ['Jan', 'Feb', 'Mar', '4', '5', '6', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        longMonths: ['Jan', 'Feb', 'Mar', '4', '5', '6', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         longDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         /* multi-users options */
@@ -392,7 +393,7 @@
       removeEvent: function(eventId) {
 
           var self = this;
-
+            
           self.element.find('.wc-cal-event').each(function() {
             if ($(this).data('calEvent').id === eventId) {
                 $(this).remove();
@@ -858,7 +859,7 @@
         //set the column height
         $calendarContainer.find('.wc-full-height-column').height(options.timeslotHeight * options.timeslotsPerDay);
         //set the timeslot height
-        $calendarContainer.find('.wc-time-slot').height(options.timeslotHeight - 1); //account for border
+        $calendarContainer.find('.wc-time-slot').height(options.timeslotHeight); //account for border
         //init the time row header height
         /**
   TODO    if total height for an hour is less than 11px, there is a display problem.
@@ -1704,9 +1705,17 @@
           var pxPerMillis = $weekDay.height() / options.millisToDisplay;
           var firstHourDisplayed = options.businessHours.limitDisplay ? options.businessHours.start : 0;
           var startMillis = this._getDSTdayShift(calEvent.start).getTime() - this._getDSTdayShift(new Date(calEvent.start.getFullYear(), calEvent.start.getMonth(), calEvent.start.getDate(), firstHourDisplayed)).getTime();
+          //console.log("start:"+this._getDSTdayShift(calEvent.start).getTime());
+          //console.log("shift: "+ this._getDSTdayShift(new Date(calEvent.start.getFullYear(), calEvent.start.getMonth(), calEvent.start.getDate(), firstHourDisplayed)).getTime());
+          //console.log("start time "+startMillis);
           var eventMillis = this._getDSTdayShift(calEvent.end).getTime() - this._getDSTdayShift(calEvent.start).getTime();
-          var pxTop = pxPerMillis * startMillis;
-          var pxHeight = pxPerMillis * eventMillis;
+           // console.log("event time "+eventMillis);
+          //console.log("event start  "+this._getDSTdayShift(calEvent.end).getTime());
+          //console.log("event end " + this._getDSTdayShift(calEvent.start).getTime());
+
+          var pxTop = pxPerMillis * startMillis+7;
+          //console.log(pxTop);
+          var pxHeight = pxPerMillis * eventMillis+2;
           //var pxHeightFallback = pxPerMillis * (60 / options.timeslotsPerHour) * 60 * 1000;
       $calEvent.css({top: pxTop, height: pxHeight || (pxPerMillis * 3600000 / options.timeslotsPerHour)});
       },
@@ -1887,7 +1896,7 @@
             minHeight: options.timeslotHeight,
             stop: function(event, ui) {
                 var $calEvent = ui.element;
-                var newEnd = new Date($calEvent.data('calEvent').start.getTime() + Math.max(1, Math.round(ui.size.height / options.timeslotHeight)) * options.millisPerTimeslot);
+                var newEnd = new Date($calEvent.data('calEvent').start.getTime() + Math.max(1, Math.round(ui.size.height / options.timeslotHeight)) * options.millisPerTimeslot)+30;
                 if (self._needDSTdayShift($calEvent.data('calEvent').start, newEnd))
             newEnd = self._getDSTdayShift(newEnd, -1);
                 var newCalEvent = $.extend(true, {}, calEvent, {start: calEvent.start, end: newEnd});
