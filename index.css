@@ -24,10 +24,18 @@
    
 }
 
-li {
-   line-height: 1.5em;
+#s{
+   width: 60%;
+   -webkit-transition:width 1s;
+   transition:width 1s;
 }
 
+#s:hover{
+   width: 100%;
+   
+   border:1px solid #9ecbe2;
+   box-shadow:0 0 6px #abdcff, inset 0 1px 2px rgba(0,0,0,0.08);
+}
 
 .course-title{
 
@@ -73,5 +81,65 @@ li {
 #calendar{
    height: 400px;
 }
+/*This is for search button */
+/*#container {
+    width:100%;
+    height:100%;
+    margin:0 auto;
+    position:relative;
+}
 
+#main {
+    width:100%;
+}
 
+#searchForm fieldset {
+    width:100%;
+    position:relative;
+    display:block;
+}
+
+div.input {
+    width:50%;
+    padding:5px 15px 7px 15px;
+    border-radius:20px;
+    border:1px solid #c6d2db;
+    border-top:1px solid #b4c1cb;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,0.08);
+    float:right;
+    background:#e8edf1;
+}
+
+    div.input.focus {
+        border:1px solid #9ecbe2;
+        box-shadow:0 0 6px #abdcff, inset 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+input#s {
+    width:100%;
+    border:0;
+    border-radius:20px;
+    background:transparent;
+    height:16px;
+    color:#b4bdc4;
+    text-shadow:0 1px 1px #fff;
+}
+
+    input#s:focus {
+        outline:none
+    }
+
+input#searchSubmit {
+    width:19px;
+    height:19px;
+    text-indent:-9999px;
+    overflow:hidden;
+    
+    border:0;
+    position:absolute;
+    top:7px; right:13px;
+    z-index:5;
+    display:none;
+    cursor:pointer;
+}
+*/
