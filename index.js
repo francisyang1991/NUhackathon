@@ -73,25 +73,25 @@ $(document).ready(function () {
     	 }
 
 
-     	else{
-     		if (e.keyCode >=0 && e.keyCode<255)
-				{
-				var string;	
-				var c = String.fromCharCode(e.which);
-				if ($('#search').val() != ''){
-					string += c;
-				}
+    //  	else{
+    //  		if (e.keyCode >=0 && e.keyCode<255)
+				// {
+				// var string;	
+				// var c = String.fromCharCode(e.which);
+				// if ($('#search').val() != ''){
+				// 	string += c;
+				// }
 				
 				
-				$('#search').attr('value',string);
-				keywords=$('#search').val();		
-		         e.preventDefault();
-		         console.log("search_value is "+$('#search').val());
-				console.log("The text is "+c);
-		        // $(this).autocomplete('close');
-				 search();
-			    }      		
-     		}
+				// $('#search').attr('value',string);
+				// keywords=$('#search').val();		
+		  //        e.preventDefault();
+		  //        console.log("search_value is "+$('#search').val());
+				// console.log("The text is "+c);
+		  //       // $(this).autocomplete('close');
+				//  search();
+			 //    }      		
+    //  		}
 	});
 	
      //s.css('background-color','red');
@@ -441,6 +441,9 @@ function addCourseDownwardsCalendar(x){
 // 	if(this.prop('enroll')) this.find($('i')).prop('class','huge collapse icon')
 // 		else this.find($('i')).prop('class','huge expand icon');
 // })
+function getDaysInMonth(m, y) {
+   return /8|3|5|10/.test(--m)?30:m==1?(!(y%4)&&y%100)||!(y%400)?29:28:31;
+}
 
 function enroll(x){
 
@@ -464,37 +467,55 @@ function enroll(x){
 	console.log(starttime);
 	console.log(starttime[0]+starttime[1]);
 	console.log(endtime);
+	var	year = new Date().getFullYear();
+	var	month = new Date().getMonth();
+	var	day1 = new Date().getDate();
+	var a = new Date();
+	console.log(a);
+	console.log(year);
+	console.log(month);
+	console.log(day1);
+	console.log(a.getDay());
+
+	var daysInMonth = getDaysInMonth(month,year);
 
 	var n = day.length/2;
 	console.log(day);
 	var date = new Array(n);
+
+	var mondayDate = 0;
+	var xx = day1 - a.getDay() + 1;
+	mondayDate =  (xx < 1) ? (xx+daysInMonth):xx;
+	console.log("monday is "+mondayDate);
+	daysInMonth = daysInMonth +1;
 	for(var j = 0; j < n; j++){
 		switch(day[2*j+1]){
 			case "o": 
-				date[j] = 21;
+				date[j] = mondayDate;
 				break;
 			case "u": 
-				date[j] = 22;
+				date[j] = getRightDate((mondayDate+1),daysInMonth);
 				break;
 			case "e": 
-				date[j] = 23;
+				date[j] = getRightDate((mondayDate+2),daysInMonth);
 				break;
 			case "h": 
-				date[j] = 24;
+				date[j] = getRightDate((mondayDate+3),daysInMonth);
 				break;
 			case "r": 
-				date[j] = 25;
+				date[j] = getRightDate((mondayDate+4),daysInMonth);
 				break;
 			case "a": 
-				date[j] = 26;
+				date[j] = getRightDate((mondayDate+5),daysInMonth);
 				break;
 			default: 
-				date[j] = 27;
+				date[j] = getRightDate((mondayDate+6),daysInMonth);
 				break;
 		}		
 	}
 	//console.log(date);
 	//console.log("catalog_num :" +course.attr('catalog_num'));
+	
 	var tempChunkId = 'previewChunk'+course.attr('id');
 	for(var j = 0; j < n; j++){
 		if($(x).parent().prop('enroll')){
@@ -502,8 +523,8 @@ function enroll(x){
 			NewEvent = {
 	              // "id":$(x).parent().prop('id')*(j+1),
 	              	"id":tempChunkId,
-	               "start": new Date(2014, 3, date[j], starttime[0]+starttime[1],starttime[3]+starttime[4]),
-	               "end": new Date(2014, 3, date[j], endtime[0]+endtime[1],endtime[3]+endtime[4]),
+	               "start": new Date(year, month, date[j], starttime[0]+starttime[1],starttime[3]+starttime[4]),
+	               "end": new Date(year, month, date[j], endtime[0]+endtime[1],endtime[3]+endtime[4]),
 	               "title":course.attr('catalog_num'),
 	            };
 	         //console.log(tempChunkId);  
@@ -515,6 +536,20 @@ function enroll(x){
 		}
 	}
 }
+
+
+function getRightDate(date,totalDays){
+	if (date <= totalDays) {
+		return date;
+
+	}
+	else{
+		return (date-totalDays);
+	}
+
+}
+
+
 
 var search_result =[];
 var keywords;

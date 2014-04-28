@@ -24,7 +24,7 @@ $(document).ready(function() {
          return ($(window).height() - $("h1").outerHeight() - 1)/1;
       },
       eventRender : function(calEvent, $event) {
-         if (calEvent.end.getTime() < new Date().getTime()) {
+         
 
             $event.css("backgroundColor", $('#'+calEvent.id).css('background-color'));
             console.log("In Demo: "+calEvent.id);
@@ -32,7 +32,7 @@ $(document).ready(function() {
                "backgroundColor" : "blue",
                "border" : "1px solid #888"
             });
-         }
+         
       },
       draggable : function(calEvent, $event) {
          return 0;
