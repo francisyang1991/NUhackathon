@@ -62,6 +62,41 @@ $(document).ready(function () {
 		search();
 	});
 
+	$("#search").keypress(function(e) {
+	  if(e.keyCode == 13)
+	     {
+	         e.preventDefault();
+	         keywords=$('#search').val();
+	         $(this).autocomplete('close');
+			 search();
+	         
+    	 }
+
+
+     	else{
+     		if (e.keyCode >=0 && e.keyCode<255)
+				{
+				var string;	
+				var c = String.fromCharCode(e.which);
+				if ($('#search').val() != ''){
+					string += c;
+				}
+				
+				
+				$('#search').attr('value',string);
+				keywords=$('#search').val();		
+		         e.preventDefault();
+		         console.log("search_value is "+$('#search').val());
+				console.log("The text is "+c);
+		        // $(this).autocomplete('close');
+				 search();
+			    }      		
+     		}
+	});
+	
+     //s.css('background-color','red');
+	
+	
 
 })
 
@@ -375,7 +410,7 @@ function addCourseDownwardsCalendar(x){
 	{
 		//console.log(course.attr('catalog_num'));
 		var to_append = '<div class = "preview-classes" id=previewChunk'+course.attr('id')+'>'+'<button style = "float:right;" onclick = "cancelCourse(this)">X</button>'
-					  +'<div class = "choosenCourses" id="courses" style = "height:30px; font-size:70%;text-align:center">'
+					  +'<div class = "choosenCourses" id="courses" style = "height:20px; font-size:70%;text-align:center;padding-top:5px;">'
 					  +course.attr('catalog_num')+'  :'+course.attr('courseTitle')+'</div>'+'</section>';
 
 		console.log(to_append);
@@ -587,3 +622,12 @@ function getRandomColor() {
     }
     return color;
 }
+
+
+
+
+
+
+
+
+

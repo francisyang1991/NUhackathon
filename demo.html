@@ -18,6 +18,7 @@
 
   <link rel='stylesheet' type='text/css' href='calendar/jquery.weekcalendar.css' />
   <link rel='stylesheet' type='text/css' href='demo.css' />
+  <link rel="stylesheet" type="text/css" href="index.css"/>
                   
   <link rel='stylesheet' type='text/css' href='calendar/skins/default.css' />
   <link rel='stylesheet' type='text/css' href='Wallpaper-master/jquery.fs.wallpaper.css' />
@@ -64,7 +65,7 @@
 
       <p>Terms: </p>
       <div class="ui compact menu">
-        <div class="ui simple dropdown item" id="terms">
+        <div class="ui simple dropdown item" id="terms" style  = "">
           Selection <i class="dropdown icon"></i>
           <div class="menu" id="terms_menu" style="overflow:scroll; height:150px">
           </div>
@@ -97,14 +98,30 @@
 
 
   <div class="eight wide column" style = "padding-left:0px;padding-right:0px;">
-    <div class="ui segment">
+    <div class="ui segment" style = "height:100px;  ">
       <h2>Search</h2>
-      <div class="ui fluid icon input" style = "">
-        <input type="text" id = "search" placeholder="Search...">
-        <div class = "ui icon button" id ="search_btn">
-        <i class="search icon" ></i>
-      </div>
-      </div>
+          <div id = "searchContainer" style = "width:100%;">
+              <div class="ui fluid icon input" id = "s" >
+                <input type="text" id = "search" style="font-size:90%;" placeholder="Course Name,Instructor or Major">
+                <div class = "ui icon button" id ="search_btn">
+                  <i class="search icon" ></i>
+                </div>
+              </div>
+           </div>  
+
+           <!-- <div id="container">
+              <div id="main">
+                      <form id="searchForm">
+                          <fieldset>
+                              <div class="input">
+                                  <input type="text" name="s" id="s" value="Enter your search" />
+                              </div>
+                              <input type="submit" class ="search icon" id="searchSubmit" value="" />
+                          </fieldset>
+                      </form>
+              </div>
+
+            </div> -->
       <br>
       <div id = "body">
       </div>
