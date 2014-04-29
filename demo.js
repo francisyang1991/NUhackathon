@@ -25,9 +25,9 @@ $(document).ready(function() {
       },
       eventRender : function(calEvent, $event) {
          
-
-            $event.css("backgroundColor", $('#'+calEvent.id).css('background-color'));
-            console.log("In Demo: "+calEvent.id);
+            var calEventId = "#"+calEvent.id.slice(0,-2);
+            $event.css("backgroundColor", $(calEventId).css('background-color'));
+            console.log("In Demo: "+calEventId);
             $event.find(".wc-time").css({
                "backgroundColor" : "blue",
                "border" : "1px solid #888"

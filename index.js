@@ -8,6 +8,8 @@ var courses = [];
 var all_courses =[];
 var select_flag=0;
 var url_head = 'http://vazzak2.ci.northwestern.edu/';
+var search_result =[];
+//var keywords;
 //var tempChunkId = null;
 $(document).ready(function () {
 
@@ -52,24 +54,24 @@ $(document).ready(function () {
 		// 	this.find($('i')).attr('class','huge expand icon');
 		
 		// 	})
-			$('.courselist').empty();
-			$('.huge.collapse.icon').prop('class','huge expand icon');
+		$('.courselist').empty();
+		$('.huge.collapse.icon').prop('class','huge expand icon');
 			
 		});
 	// });
+
 	$('#search_btn').on('click',function(){
-		keywords=$('#search').val();
-		search();
+		var keywords=$('#search').val();
+		search(keywords);
 	});
 
 	$("#search").keypress(function(e) {
 	  if(e.keyCode == 13)
 	     {
 	         e.preventDefault();
-	         keywords=$('#search').val();
+	         var keywords=$('#search').val();
 	         $(this).autocomplete('close');
-			 search();
-	         
+			 search(keywords);	         
     	 }
 
 
@@ -367,11 +369,23 @@ function select_courses(){
 
 function cancelCourse(x){
 	var course = $(x).parent();
+
+	console.log(course);
+	//var day = $(x).parent().attr('days');
+	var temp = course.attr("days");
+	var n = temp.length/2;
 	$(course).remove();
 	//$(x).hide();
-	var id = $(course).attr('id');
-	console.log("calcel ID  "+id);
-	$("#calendar").weekCalendar('removeEvent', id);
+
+	for(var j = 0; j < n; j++){
+		var tempChunkId = course.attr('id')+"_"+j;
+		console.log("calcelCourse: "+tempChunkId);
+		$("#calendar").weekCalendar('removeEvent', tempChunkId);
+	}
+
+	//var id = $(course).attr('id');
+	//console.log("calcel ID  "+id);
+	//$("#calendar").weekCalendar('removeEvent', id);
 }
 
 function appendtobody(crs){
@@ -402,14 +416,34 @@ function draw_courses(){
 
 }
 
+
+function changeButton(btn){
+	var first_id = $(btn).parent().prop('id')
+	var mothercourse = '#'+first_id.substr(12);
+	$(mothercourse).prop('enroll','false');
+	$(mothercourse).find('i').removeClass( "collapse" ).addClass( "expand");
+	// if(course.prop('enroll')){
+	// 	$(x).prop('class', 'huge collapse icon');
+	// }
+	// else $(x).prop('class', 'huge expand icon');
+	
+}
+
+function dofordrop(x){
+cancelCourse(x);
+changeButton(x);
+}
 function addCourseDownwardsCalendar(x){
+	// console.log(x.prop('id'));
 	var panel = $(".courselist");
 	var course = $(x).parent();
-
+    var day = $(x).parent().attr('days');
+    console.log(course.prop('enroll'));
+    console.log("calendar "+day);
 	if (!course.prop('enroll'))
 	{
 		//console.log(course.attr('catalog_num'));
-		var to_append = '<div class = "preview-classes" id=previewChunk'+course.attr('id')+'>'+'<button style = "float:right;" onclick = "cancelCourse(this)">X</button>'
+		var to_append = '<div class = "preview-classes" id=previewChunk'+course.attr('id')+' days='+day+'>'+'<button id = "" style = "float:right;"' +'onclick=dofordrop(this)'+'>X</button>'
 					  +'<div class = "choosenCourses" id="courses" style = "height:20px; font-size:70%;text-align:center;padding-top:5px;">'
 					  +course.attr('catalog_num')+'  :'+course.attr('courseTitle')+'</div>'+'</section>';
 
@@ -442,14 +476,17 @@ function addCourseDownwardsCalendar(x){
 // 		else this.find($('i')).prop('class','huge expand icon');
 // })
 function getDaysInMonth(m, y) {
-   return /8|3|5|10/.test(--m)?30:m==1?(!(y%4)&&y%100)||!(y%400)?29:28:31;
+   //return /8|3|5|10/.test(--m)?30:m==1?(!(y%4)&&y%100)||!(y%400)?29:28:31;
+   return new Date(y, m + 1, 0).getDate();
 }
 
 function enroll(x){
-
+	// console.log($(x).parent());
 	addCourseDownwardsCalendar(x);
+
 	
 	var course = $(x).parent();
+	// console.log(course.prop('id')+"__"+course.attr('enroll'));
 	var status = course.prop('enroll');
 	course.prop('enroll',!status);
 	if(course.prop('enroll')){
@@ -459,9 +496,10 @@ function enroll(x){
 	// var course = $('#'+$(x).parent().id);
 	// console.log($(x).parent().attr('id'));
 	
-	console.log("x is "+x);
+	//console.log("x is "+x);
 	
 	var day = $(x).parent().attr('days');
+	console.log("enroll : "+day);
 	var starttime = $(x).parent().attr('start');
 	var endtime = $(x).parent().attr('end');
 	console.log(starttime);
@@ -478,10 +516,11 @@ function enroll(x){
 	console.log(a.getDay());
 
 	var daysInMonth = getDaysInMonth(month,year);
-
+	console.log("daysInMonth is "+daysInMonth);
 	var n = day.length/2;
 	console.log(day);
 	var date = new Array(n);
+	var monthlist = new Array(n);
 
 	var mondayDate = 0;
 	var xx = day1 - a.getDay() + 1;
@@ -489,6 +528,7 @@ function enroll(x){
 	console.log("monday is "+mondayDate);
 	daysInMonth = daysInMonth +1;
 	for(var j = 0; j < n; j++){
+		monthlist[j] = month;
 		switch(day[2*j+1]){
 			case "o": 
 				date[j] = mondayDate;
@@ -516,15 +556,17 @@ function enroll(x){
 	//console.log(date);
 	//console.log("catalog_num :" +course.attr('catalog_num'));
 	
-	var tempChunkId = 'previewChunk'+course.attr('id');
+	
 	for(var j = 0; j < n; j++){
+		var tempChunkId = 'previewChunk'+course.attr('id')+"_"+j;
 		if($(x).parent().prop('enroll')){
-			
+			if (j>0 && date[j-1]> date[j])
+				monthlist[j]++;;
 			NewEvent = {
 	              // "id":$(x).parent().prop('id')*(j+1),
 	              	"id":tempChunkId,
-	               "start": new Date(year, month, date[j], starttime[0]+starttime[1],starttime[3]+starttime[4]),
-	               "end": new Date(year, month, date[j], endtime[0]+endtime[1],endtime[3]+endtime[4]),
+	               "start": new Date(year, monthlist[j], date[j], starttime[0]+starttime[1],starttime[3]+starttime[4]),
+	               "end": new Date(year, monthlist[j], date[j], endtime[0]+endtime[1],endtime[3]+endtime[4]),
 	               "title":course.attr('catalog_num'),
 	            };
 	         //console.log(tempChunkId);  
@@ -541,54 +583,56 @@ function enroll(x){
 function getRightDate(date,totalDays){
 	if (date <= totalDays) {
 		return date;
-
 	}
 	else{
-		return (date-totalDays);
+		return (date-totalDays+1);
 	}
 
 }
 
 
-
-var search_result =[];
-var keywords;
-function search(){
+function search(keywords){
 /* 	alert(keywords); */
 	search_result.length=0;
 	$('#body').empty();
+
+	var patt = new RegExp(keywords+'+',"i");
+
+	//alert(patt.test("Data"));
+	//keywords = patt;
 	var flag=new Array(100000);
 	for( var y = 0;y<flag.length;y++){
 		flag[y]= 0;
 	}
+
 	//console.log(flag.length);
 	//console.log('length 0'+search_result.length);
 	if(1){
 		for( var i =0;i<all_courses.length;i++){
-			if(all_courses[i].title.indexOf(keywords)!==-1&&flag[all_courses[i].id]===0){
+			if(patt.test(all_courses[i].title)&&flag[all_courses[i].id]===0){
 				flag[all_courses[i].id] =1;
 				search_result.push(all_courses[i]);
 				continue;
 			}
-			if(all_courses[i].instructor.name.indexOf(keywords)!==-1&&flag[all_courses[i].id]===0){
-				flag[all_courses[i].id] =1;
-				search_result.push(all_courses[i]);
-				
-				continue;
-			}
-			if(all_courses[i].subject.indexOf(keywords)!==-1&&flag[all_courses[i].id]===0){
+			if(patt.test(all_courses[i].instructor.name)&&flag[all_courses[i].id]===0){
 				flag[all_courses[i].id] =1;
 				search_result.push(all_courses[i]);
 				
 				continue;
 			}
-			if(all_courses[i].catalog_num.indexOf(keywords)!==-1&&flag[all_courses[i].id]===0){
+			if(patt.test(all_courses[i].subject)&&flag[all_courses[i].id]===0){
 				flag[all_courses[i].id] =1;
 				search_result.push(all_courses[i]);
 				
 				continue;
 			}
-			if(all_courses[i].room.indexOf(keywords)!==-1&&flag[all_courses[i].id]===0){
+			if(patt.test(all_courses[i].catalog_num)&&flag[all_courses[i].id]===0){
+				flag[all_courses[i].id] =1;
+				search_result.push(all_courses[i]);
+				
+				continue;
+			}
+			if(patt.test(all_courses[i].room)&&flag[all_courses[i].id]===0){
 				flag[all_courses[i].id] =1;
 				search_result.push(all_courses[i]);
 				
@@ -599,30 +643,30 @@ function search(){
 	else{
 		console.log("not all course");
 		for( var i =0;i<courses.length;i++){
-			if(courses[i].title.indexOf(keywords)!==-1&&flag[courses[i].id]===0){
+			if(patt.test(all_courses[i].title)&&flag[all_courses[i].id]===0){
 				flag[courses[i].id] =1;
 				search_result.push(courses[i]);
 				continue;
 			}
-			if(courses[i].instructor.name.indexOf(keywords)!==-1&&flag[courses[i].id]===0){
-				flag[courses[i].id] =1;
-				search_result.push(courses[i]);
-				
-				continue;
-			}
-			if(courses[i].subject.indexOf(keywords)!==-1&&flag[courses[i].id]===0){
+			if(patt.test(all_courses[i].instructor.name)&&flag[all_courses[i].id]===0){
 				flag[courses[i].id] =1;
 				search_result.push(courses[i]);
 				
 				continue;
 			}
-			if(courses[i].catalog_num.indexOf(keywords)!==-1&&flag[courses[i].id]===0){
+			if(patt.test(all_courses[i].subject)&&flag[all_courses[i].id]===0){
 				flag[courses[i].id] =1;
 				search_result.push(courses[i]);
 				
 				continue;
 			}
-			if(courses[i].room.indexOf(keywords)!==-1&&flag[courses[i].id]===0){
+			if(patt.test(all_courses[i].catalog_num)&&flag[all_courses[i].id]===0){
+				flag[courses[i].id] =1;
+				search_result.push(courses[i]);
+				
+				continue;
+			}
+			if(patt.test(all_courses[i].room)&&flag[all_courses[i].id]===0){
 				flag[courses[i].id] =1;
 				search_result.push(courses[i]);
 				
@@ -631,21 +675,12 @@ function search(){
 		}		
 		
 	}
-	//console.log('length'+search_result.length);
-
-	for (var i =0;i<search_result.length;i++){
-			// var to_append = '<section class ="ui segment" enroll = "false" days = '+search_result[i].meeting_days +' start ='
-			// +search_result[i].start_time+' end ='+search_result[i].end_time+' id ='+search_result[i].class_num+ ' catalog_num = '+search_result[i].catalog_num+'>'
-			// +'<i class="huge expand icon" onclick = "enroll(this)" style = "float:right"></i>'+'<h3>'
-			// +search_result[i].catalog_num+" "+search_result[i].title+'<h3>'+'<p>'+"Instructor: "+search_result[i].instructor.name+'</p><p>'
-			// +"Seats Available: "+search_result[i].seats+'</p><p>'+"Room: " +search_result[i].room+'</p><p>'+search_result[i].start_time+' to '+search_result[i].end_time+"  "+search_result[i].meeting_days+' </p></section>';
-			// $("#body").append(to_append);
+	
+	for (var i =0;i<search_result.length;i++){			
 			appendtobody(search_result[i]);
 		}
 
-		//console.log('go!');
-
-	// return search_result;
+		
 }
 
 
